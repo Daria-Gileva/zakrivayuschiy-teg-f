@@ -168,7 +168,6 @@ text-transform: uppercase;
 }
 
 .main__section {
-  width: 696px;
   display: flex;
   flex-direction: column;
   border: var(--border-color);
@@ -521,8 +520,7 @@ dialog::backdrop {
 }
 
 .image__sadness {
-  filter: opacity(0.6);
-  filter: hue-rotate(0.5turn);
+  filter: opacity(0.6) hue-rotate(0.5turn);
 }
 
 .image__now {
