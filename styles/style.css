@@ -174,7 +174,6 @@ text-transform: uppercase;
   background-color: var(--bg-section-color);
   font-family: var(--font-inter);
   gap: 25px;
-  width: clamp(375px, 43.75rem, 700px);
   position: relative;
   inline-size: clamp(23.1875rem, 16.0352rem + 30.5164vw, 43.5rem);
 }
@@ -195,47 +194,7 @@ text-transform: uppercase;
 .main__section-image {
   border-bottom: var(--border-color);
   object-fit: cover;
-  position: relative;
-}
-
-.main__section-image::before {
-  content: "</html>";
-  position: absolute;
-  font-size: 14px;
-  font-family: var(--font-press-star);
-  font-weight: 400;
-  line-height: 14px;
-  top: 25px;
-  right: 25px;
-  /* width: 98px; */
-  height: auto;
-  text-transform: uppercase;
-  opacity: 0.5;
-  mix-blend-mode: hard-light;
-  z-index: 2;
-  /* 
-  position: absolute;
-    left: clamp(16.5rem, 9.6998rem + 29.0141vw, 35.8125rem);
-    top: 25px;
-    color: var(--main-color);
-    mix-blend-mode: hard-light;
-    opacity: 0.5;
-    text-shadow: 1px var(--outline-color);
-    font-family: var(--accent-font), Impact, fantasy;
-    font-size: 14px;
-    line-height: 14px;
-    text-transform: uppercase;
-    z-index: 2; */
-}
-
-@supports (
-  (text-stroke: 2px var(--bg-section-color)) or
-    (-webkit-text-stroke: 2px var(--bg-section-color))
-) {
-  .main__section::after {
-    -webkit-text-stroke: 2px var(--bg-section-color);
-    paint-order: stroke fill;
-  }
+  width: 100%;
 }
 
 .main__section-text {
@@ -400,37 +359,6 @@ text-transform: uppercase;
   padding: 15px 18px;
   margin: 0;
   align-self: center;
-  /* inline-size: fit-content; */
-  /* width: clamp(19.125rem, 18.487rem + 2.723vw, 20.938rem); */
-}
-
-/* .footer {
-  width: auto;
-  display: flex;
-  justify-content: center;
-} */
-
-@media (width <= 375px) {
-  .footer-button {
-    margin: 0 34.5px;
-  }
-
-  .button__text {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .floppy {
-    width: 28px;
-    height: 28px;
-  }
-
-  .dialog {
-    block-size: 198px;
-    inline-size: auto;
-  }
 }
 
 .dialog {
@@ -480,11 +408,6 @@ text-transform: uppercase;
   height: 39px;
 }
 
-/* .floppy {
-  inline-size: 28px;
-  block-size: 28px;
-} */
-
 .floppy__dialog {
   width: 39px;
   height: 39px;
@@ -525,4 +448,58 @@ dialog::backdrop {
 
 .image__now {
   filter: saturate(390%);
+}
+
+.label {
+  object-fit: cover;
+  position: relative;
+
+  &::before {
+    content: "</html>";
+    position: absolute;
+    font-size: 14px;
+    font-family: var(--font-press-star);
+    font-weight: 400;
+    line-height: 14px;
+    top: 25px;
+    right: clamp(0.813rem, 0.548rem + 1.127vw, 1.563rem);
+    height: auto;
+    text-transform: uppercase;
+    opacity: 0.5;
+    mix-blend-mode: hard-light;
+    z-index: 2;
+  }
+}
+
+@supports (
+  (text-stroke: 2px var(--bg-section-color)) or
+    (-webkit-text-stroke: 2px var(--bg-section-color))
+) {
+  .label::before {
+    -webkit-text-stroke: 2px var(--bg-section-color);
+    paint-order: stroke fill;
+  }
+}
+
+@media (width <= 375px) {
+  .footer-button {
+    margin: 0 34.5px;
+  }
+
+  .button__text {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .floppy {
+    width: 28px;
+    height: 28px;
+  }
+
+  .dialog {
+    block-size: 198px;
+    inline-size: auto;
+  }
 }
