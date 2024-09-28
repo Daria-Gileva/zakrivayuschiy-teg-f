@@ -12,8 +12,8 @@
   --accent-color: rgba(0, 204, 20, 1);
   --font-default: "Inter-Variable", "Arial", "Helvetica", sans-serif;
   --font-main: "Press Start 2P", "Ui-monospace", fantasy;
-  --font-weight-normal: 465px;
-  --font-weight-bold: 785px;
+  --font-weight-normal: 465;
+  --font-weight-bold: 785;
   --border-color: 2px solid rgba(0, 204, 20, 1);
   --bg-section-color: rgba(0, 0, 0, 1);
   --color-hover: rgba(0, 204, 20, 0.6);

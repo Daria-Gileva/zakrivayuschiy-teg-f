@@ -27,7 +27,7 @@
   align-content: center;
   justify-items: center;
   flex-wrap: wrap;
-  font-variation-settings: "wdht" var(--font-weight-normal);
+  font-variation-settings: "wght" var(--font-weight-normal);
 }
 
 .header {
