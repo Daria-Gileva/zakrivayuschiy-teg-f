@@ -420,7 +420,6 @@ dialog::backdrop {
 }
 
 .label {
-  /* object-fit: cover; */
   position: absolute;
   font-size: 14px;
   font-family: var(--font-main), "Ui-monospace", fantasy;
