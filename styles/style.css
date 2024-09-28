@@ -14,36 +14,35 @@
 */
 
 .page {
-  color-scheme: dark light;
+  /* color-scheme: dark light; */
   min-inline-size: 320px;
   min-block-size: 100dvb;
   background: var(--bg-color);
   background-size: cover;
   background-attachment: fixed;
   color: var(--accent-color);
-  padding: 102px 0 0;
+  padding: 102px 0;
   display: flex;
   flex-direction: column;
   align-content: center;
   justify-items: center;
   flex-wrap: wrap;
-  gap: 52px;
-  font-variation-settings: "wght" 465px;
+  /* gap: 52px; */
+  font-variation-settings: "wdht" var(--font-weight-normal);
 }
 
 .header {
   display: flex;
   flex-direction: column;
-  max-height: 368px;
   width: clamp(23.1875rem, 16.0352rem + 30.5164vw, 43.5rem);
-  font-family: var(--font-press-star), "Ui-monospace", system-ui;
+  font-family: var(--font-main), "Ui-monospace", system-ui;
   font-weight: 400;
   background-color: var(--bg-section-color);
   border: var(--border-color);
   text-transform: uppercase;
   justify-content: center;
   align-items: center;
-  margin-block-end: 48px;
+  margin-block-end: 102px;
 }
 
 .header__title-section {
@@ -51,8 +50,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-block-start: clamp(7.5rem, 7.148rem + 1.502vw, 8.5rem);
-  gap: 20px;
+  margin-block-start: clamp(6.875rem, 6.303rem + 2.441vw, 8.5rem);
+  gap: clamp(0.5rem, 0.236rem + 1.127vw, 1.25rem);
 }
 
 .header__title {
@@ -68,8 +67,11 @@
 .theme-menu__list {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  padding: 25px 0;
+  gap: 12px;
+  margin-block-start: clamp(1.188rem, 1.055rem + 0.563vw, 1.563rem);
+  margin-block-end: 25px;
+  margin-inline-start: clamp(9.625rem, 6.082rem + 15.117vw, 19.688rem);
+  margin-inline-end: clamp(8.313rem, 4.703rem + 15.399vw, 18.563rem);
 }
 
 .theme-menu__button {
@@ -87,10 +89,6 @@
     opacity: 0.6;
   }
 
-  &:focus-visible {
-    opacity: 0.6;
-  }
-
   &:focus {
     opacity: 0.6;
   }
@@ -103,13 +101,15 @@
   left: 0;
   top: 14px;
   position: absolute;
+  overflow: hidden;
   background-color: currentColor;
-  transition: 0.3s ease-in-out;
 }
 
 .theme-menu__button:focus-visible::after {
   width: 100%;
   opacity: 0.6;
+  animation: menu-button__focus 0.3s ease;
+  transform-origin: left;
 }
 
 .theme-menu__button:disabled::before {
@@ -130,22 +130,23 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 52px;
+  gap: 53px;
   width: clamp(23.438rem, 16.373rem + 30.141vw, 43.5rem);
 }
 
 .main__section {
   display: flex;
   flex-direction: column;
-  border: var(--border-color);
+  outline: var(--border-color);
   background-color: var(--bg-section-color);
-  font-family: var(--font-inter), "Arial", "Helvetica", sans-serif;
-  gap: 25px;
+  font-family: var(--font-default), "Arial", "Helvetica", sans-serif;
   position: relative;
   inline-size: clamp(23.1875rem, 16.0352rem + 30.5164vw, 43.5rem);
 }
 
-.main__section:not(:first-child) {
+.main__section-card {
+  display: flex;
+  flex-direction: column;
   gap: 25px;
 }
 
@@ -153,34 +154,41 @@
   font-weight: var(--font-weight-bold);
   line-height: 21.78px;
   font-size: 18px;
-  padding: 3px 10px;
-  border-bottom: var(--border-color);
-  margin-block-end: -25px;
+  padding: 5px 10px;
+  outline: var(--border-color);
 }
 
 .main__section-image {
-  border-bottom: var(--border-color);
+  outline: var(--border-color);
   object-fit: cover;
+  object-position: center;
   width: 100%;
 }
 
 .main__section-text {
   padding: 0 25px;
   font-weight: var(--font-weight-normal);
+  font-size: 18px;
 }
 
 .main__section-button {
   display: flex;
-  gap: 12px;
+  gap: 3px;
   align-self: flex-end;
   margin: 0 25px 25px;
   align-items: center;
 }
 
+.main__section-paragraph {
+  display: flex;
+  flex-direction: column;
+  gap: 27px;
+}
+
 .button {
   border: var(--border-color);
   background-color: var(--bg-section-color);
-  font-family: var(--font-press-star), "Ui-monospace", system-ui;
+  font-family: var(--font-main), "Ui-monospace", system-ui;
   font-size: 14px;
   line-height: 12.6px;
   font-weight: 400;
@@ -190,7 +198,7 @@
   align-items: center;
   color: var(--accent-color);
   overflow: hidden;
-  transition: box-shadow 0.3s ease-in-out;
+  transition: box-shadow 0.3s ease;
 
   &:focus-visible {
     box-shadow: 2px 2px 0 0 var(--accent-color);
@@ -200,12 +208,13 @@
 .button__text {
   position: relative;
   z-index: 2;
-  color: var(--accent-color);
+  color: var(--button-color-text);
+  mix-blend-mode: difference;
   display: flex;
   gap: 8px;
   align-items: center;
   justify-content: center;
-  transition: color 0.5s ease-in-out;
+  transform: all 0.5s ease-in-out;
 }
 
 .button::after {
@@ -216,16 +225,12 @@
   top: 0;
   position: absolute;
   background-color: var(--accent-color);
-  transition: 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 
 .button:hover {
   &::after {
     width: 100%;
-  }
-
-  .button__text {
-    color: var(--bg-section-color);
   }
 }
 
@@ -243,14 +248,14 @@
 }
 
 .card__like-button {
-  padding: 12.5px 0;
+  padding: 10.5px 0;
   align-self: flex-end;
   width: 133px;
 }
 
 .core {
   fill: var(--bg-section-color);
-  transition: fill 0.3s ease 0.05s;
+  transition: fill 0.3s ease;
 }
 
 .main-body {
@@ -260,7 +265,7 @@
 
 .contour {
   fill: var(--heart-color-contour);
-  transition: fill 0.3s ease 0.06s;
+  transition: fill 0.1s linear;
 }
 
 .sparks {
@@ -284,10 +289,12 @@
 
   &:active {
     .core {
+      transition: fill 0.3s ease;
       fill: var(--heart-color-fill);
     }
 
     .main-body {
+      transition: fill 0.3s ease 0.05s;
       fill: var(--heart-color-fill);
     }
   }
@@ -305,7 +312,7 @@
   }
 
   .contour {
-    transition: fill 0.3s linear 0.06s;
+    transform: fill 0.3s linear 0.06s;
     fill: var(--heart-color-fill);
   }
 
@@ -333,7 +340,7 @@
   padding: 30px;
   background-color: var(--bg-section-color);
   color: var(--accent-color);
-  font-family: var(--font-press-star), "Ui-monospace", system-ui;
+  font-family: var(--font-main), "Ui-monospace", system-ui;
   font-size: 14px;
   font-weight: 400;
   line-height: 21px;
@@ -385,70 +392,72 @@ dialog::backdrop {
   background-color: rgb(0 0 0 / 0.75);
 }
 
-.image__freetrack {
-  filter: grayscale(0);
-}
-
-.image__clear-page {
+.image__filter-grayscale {
   filter: grayscale(0.6);
 }
 
-.image__first-sprint {
+.image__filter-contrast {
   filter: contrast(1.8);
 }
 
-.image__second-sprint {
+.image__filter-blur {
   filter: blur(3px);
 }
 
-.image__next {
-  filter: contrast(250%);
+.image__filter-opacity {
+  filter: opacity(0.6);
 }
 
-.image__third-sprint {
+.image__filter-invert {
   filter: invert(60%);
 }
 
-.image__sadness {
-  filter: opacity(0.6) hue-rotate(0.5turn);
+.image__filter-hue-rotate {
+  filter: contrast(250%) hue-rotate(0.5turn);
 }
 
-.image__now {
+.image__filter-saturate {
   filter: saturate(390%);
 }
 
 .label {
-  object-fit: cover;
-  position: relative;
-
-  &::before {
-    content: "</html>";
-    position: absolute;
-    font-size: 14px;
-    font-family: var(--font-press-star), "Ui-monospace", system-ui;
-    font-weight: 400;
-    line-height: 14px;
-    top: 25px;
-    right: clamp(0.813rem, 0.548rem + 1.127vw, 1.563rem);
-    height: auto;
-    text-transform: uppercase;
-    opacity: 0.5;
-    mix-blend-mode: hard-light;
-    z-index: 2;
-  }
+  /* object-fit: cover; */
+  position: absolute;
+  font-size: 14px;
+  font-family: var(--font-main), "Ui-monospace", system-ui;
+  font-weight: 400;
+  line-height: 14px;
+  top: 25px;
+  right: clamp(0.813rem, 0.548rem + 1.127vw, 1.563rem);
+  height: auto;
+  text-transform: uppercase;
+  opacity: 0.5;
+  mix-blend-mode: hard-light;
 }
 
 @supports (
-  (text-stroke: 2px var(--bg-section-color)) or
-    (-webkit-text-stroke: 2px var(--bg-section-color))
+  (text-stroke: 2px var(--text-shadow)) or
+    (-webkit-text-stroke: 2px var(--text-shadow))
 ) {
-  .label::before {
-    -webkit-text-stroke: 2px var(--bg-section-color);
+  .label {
+    -webkit-text-stroke: 2px var(--text-shadow);
     paint-order: stroke fill;
   }
 }
 
+.section-label {
+  position: relative;
+}
+
 @media (width <= 375px) {
+  .header {
+    min-width: 375px;
+  }
+
+  /* .header__title-section {
+    margin-block-start: 120px;
+  } */
+
   .footer-button {
     margin: 0 34.5px;
   }
