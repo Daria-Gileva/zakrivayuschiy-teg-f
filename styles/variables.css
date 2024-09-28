@@ -11,7 +11,7 @@
     repeating-linear-gradient(#007f0c, #004306);
   --accent-color: rgba(0, 204, 20, 1);
   --font-default: "Inter-Variable", "Arial", "Helvetica", sans-serif;
-  --font-main: "Press Start 2P", "Ui-monospace", system-ui;
+  --font-main: "Press Start 2P", "Ui-monospace", fantasy;
   --font-weight-normal: 465;
   --font-weight-bold: 785;
   --border-color: 2px solid rgba(0, 204, 20, 1);

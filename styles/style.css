@@ -14,7 +14,7 @@
 */
 
 .page {
-  /* color-scheme: dark light; */
+  color-scheme: dark light;
   min-inline-size: 320px;
   min-block-size: 100dvb;
   background: var(--bg-color);
@@ -27,7 +27,6 @@
   align-content: center;
   justify-items: center;
   flex-wrap: wrap;
-  /* gap: 52px; */
   font-variation-settings: "wdht" var(--font-weight-normal);
 }
 
@@ -35,7 +34,7 @@
   display: flex;
   flex-direction: column;
   width: clamp(23.1875rem, 16.0352rem + 30.5164vw, 43.5rem);
-  font-family: var(--font-main), "Ui-monospace", system-ui;
+  font-family: var(--font-main), "Ui-monospace", fantasy;
   font-weight: 400;
   background-color: var(--bg-section-color);
   border: var(--border-color);
@@ -188,7 +187,7 @@
 .button {
   border: var(--border-color);
   background-color: var(--bg-section-color);
-  font-family: var(--font-main), "Ui-monospace", system-ui;
+  font-family: var(--font-main), "Ui-monospace", fantasy;
   font-size: 14px;
   line-height: 12.6px;
   font-weight: 400;
@@ -340,7 +339,7 @@
   padding: 30px;
   background-color: var(--bg-section-color);
   color: var(--accent-color);
-  font-family: var(--font-main), "Ui-monospace", system-ui;
+  font-family: var(--font-main), "Ui-monospace", fantasy;
   font-size: 14px;
   font-weight: 400;
   line-height: 21px;
@@ -424,7 +423,7 @@ dialog::backdrop {
   /* object-fit: cover; */
   position: absolute;
   font-size: 14px;
-  font-family: var(--font-main), "Ui-monospace", system-ui;
+  font-family: var(--font-main), "Ui-monospace", fantasy;
   font-weight: 400;
   line-height: 14px;
   top: 25px;
@@ -454,10 +453,6 @@ dialog::backdrop {
     min-width: 375px;
   }
 
-  /* .header__title-section {
-    margin-block-start: 120px;
-  } */
-
   .footer-button {
     margin: 0 34.5px;
   }
@@ -477,5 +472,11 @@ dialog::backdrop {
   .dialog {
     block-size: 198px;
     inline-size: auto;
+  }
+}
+
+@supports (font-variation-settings: normal) {
+  .page {
+    font-family: "Inter-Variable";
   }
 }
