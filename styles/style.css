@@ -68,7 +68,7 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  margin-block-start: clamp(1.188rem, 1.055rem + 0.563vw, 1.563rem);
+  margin-block-start: clamp(1.188rem, 1.099rem + 0.376vw, 1.438rem);
   margin-block-end: 25px;
   margin-inline-start: clamp(9.625rem, 6.082rem + 15.117vw, 19.688rem);
   margin-inline-end: clamp(8.313rem, 4.703rem + 15.399vw, 18.563rem);
@@ -150,11 +150,11 @@
 }
 
 .main__section-title {
-  font-weight: var(--font-weight-bold);
+  font-variation-settings: "wght" var(--font-weight-bold);
   line-height: 21.78px;
   font-size: 18px;
-  padding: 5px 10px;
-  outline: var(--border-color);
+  padding: 4px 10px;
+  border-bottom: var(--border-color);
 }
 
 .main__section-image {
@@ -166,13 +166,14 @@
 
 .main__section-text {
   padding: 0 25px;
-  font-weight: var(--font-weight-normal);
+  font-variation-settings: "wght" var(--font-weight-normal);
   font-size: 18px;
+  line-height: 21px;
 }
 
 .main__section-button {
   display: flex;
-  gap: 3px;
+  gap: 5px;
   align-self: flex-end;
   margin: 0 25px 25px;
   align-items: center;
@@ -248,12 +249,12 @@
 .card__like-button {
   padding: 10.5px 0;
   align-self: flex-end;
-  width: 133px;
+  width: 131px;
 }
 
 .core {
   fill: var(--bg-section-color);
-  transition: fill 0.3s linear 0.05s;
+  transition: fill 0.3s linear 0.03s;
 }
 
 .main-body {
@@ -442,11 +443,22 @@ dialog::backdrop {
 
 .section-label {
   position: relative;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  width: 100%;
 }
 
 @media (width <= 375px) {
   .header {
     min-width: 375px;
+  }
+
+  .main__section-title-freetrack {
+    max-height: 52px;
+    padding-block-end: 6px;
+    padding-block-start: 4px;
+    padding-inline: 10px;
   }
 
   .footer-button {
