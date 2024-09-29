@@ -173,7 +173,7 @@
 
 .main__section-button {
   display: flex;
-  gap: 5px;
+  gap: 6px;
   align-self: flex-end;
   margin: 0 25px 25px;
   align-items: center;
@@ -463,6 +463,10 @@ dialog::backdrop {
 
   .footer-button {
     margin: 0 34.5px;
+  }
+
+  .main__section-button {
+    gap: 5px;
   }
 
   .button__text {
